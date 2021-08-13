@@ -18,15 +18,15 @@ def hex_sum(*hex_nums):
     int_div = 0
     result = []
     for number in hex_nums:
-        hex_num_1 = result[:]  # Здесь можно было попробовать использовать метод copy() вместо среза [:].
-        hex_num_2 = number[:]  # Здесь также можно было попробовать использовать метод copy().
+        hex_num_1 = result.copy()
+        hex_num_2 = number.copy()
         result.clear()
-        while len(hex_num_1) or len(hex_num_2):
+        while hex_num_1 or hex_num_2:
             item_1 = '0'
             item_2 = '0'
-            if not len(hex_num_2):
+            if not hex_num_2:
                 item_1 = hex_num_1.pop()
-            elif not len(hex_num_1):
+            elif not hex_num_1:
                 item_2 = hex_num_2.pop()
             else:
                 item_1 = hex_num_1.pop()
@@ -48,10 +48,10 @@ def hex_mul(*hex_nums):
     numbers = []
     result = []
     for number in hex_nums:
-        hex_num_1 = result[:]  # Стоило бы попробовать copy().
+        hex_num_1 = result.copy()
         if not hex_num_1:
             hex_num_1.append('1')
-        hex_num_2 = number[:]  # Замечание, аналогичное трем предыдущим.
+        hex_num_2 = number.copy()
         hex_num_1.reverse()
         hex_num_2.reverse()
         numbers.clear()
